@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Home</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+		<script src="{% static 'js/home.js' %}"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="brand">
+				{% load static %}
+				<img
+					class="brand-image"
+					src="{% static 'images/greenSentinelLogo.png' %}"
+				/>
+
+				<div class="brand-title">Green Sentinel</div>
+			</div>
+
+			<div class="col-8 m-auto pt-2 pb-2 text-center">
+				<h2>Home</h2>
+			</div>
+
+			{% if request.user.is_authenticated %}
+			<div class="navigation">
+				<a href="http://127.0.0.1:8000/plantas/" class="navigation-button"><i class="fas fa-seedling"></i>Ver plantas</a>
+
+				<a href="http://127.0.0.1:8000/sensores/" class="navigation-button"><i class="fas fa-satellite-dish"></i>Ver sensores</a>
+			</div>
+
+			<a class="logout-button" href="/logouts/"><i class="fas fa-power-off"></i>Sair</a>
+
+			<div class="col-10 m-auto pt-2 pb-2 text-center">
+				<select id="selectSensor" class="col-4 custom-select">
+					<option value="-1" selected>Escolha um sensor...</option>
+					{% for dbs in db %}
+					<option value="{{dbs.id}}">{{dbs.name}}</option>
+					{% endfor %}
+				</select>
+
+				<div id="connectSensor" class="system-button add-button">
+					Adicionar
+				</div>
+
+				<table class="col-8 table text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Sensor</th>
+							<th scope="col">Umidade</th>
+							<th scope="col">Temperatura</th>
+							<th scope="col">Iluminação</th>
+						</tr>
+					</thead>
+					<tbody id="tableSensores">
+					</tbody>
+				</table>
+			</div>
+
+			{% else %} Você precisa estar logado {% endif %}
+		</div>
+	</body>
+</html>

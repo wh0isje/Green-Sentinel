@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+	</head>
+	<body>
+		<div class="container">
+			<div class="brand">
+				{% load static %}
+				<img
+					class="brand-image"
+					src="{% static 'images/greenSentinelLogo.png' %}"
+				/>
+
+				<div class="brand-title">Green Sentinel</div>
+			</div>
+
+			<form
+				name="formPainel"
+				id="formPainel"
+				method="post"
+				action="/dologin/"
+			>
+				<div class="login-container">
+					<div class="login-fields">
+						{% if msg %}
+						<div class="alert {{class}}">{{msg}}</div>
+						{% endif %} {% csrf_token %}
+						<input
+                        style="margin-bottom: 16px;"
+							class="form-control login-field"
+							type="text"
+							name="user"
+							id="user"
+							placeholder="Nome de usuário"
+						/>
+
+						<input
+							class="form-control login-field"
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Senha"
+						/>
+					</div>
+
+					<div class="login-buttons">
+						<a
+						href="http://127.0.0.1:8000/register_user/"
+							class="system-button register-button"
+						>Cadastrar</a>
+
+						<input
+							class="system-button login-button"
+							type="submit"
+							value="Entrar"
+						/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

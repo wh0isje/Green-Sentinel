@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Planta</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="brand">
+				{% load static %}
+				<img
+					class="brand-image"
+					src="{% static 'images/greenSentinelLogo.png' %}"
+				/>
+
+				<div class="brand-title">Green Sentinel</div>
+			</div>
+
+			<div class="col-8 m-auto pt-2 pb-2 text-center">
+				<h2>Informações da planta</h2>
+
+				<a
+					href="http://127.0.0.1:8000/plantas/"
+					class="system-button add-button"
+				>
+					Voltar</a
+				>
+			</div>
+
+			<div class="col-8 m-auto pb-2 info-list">
+				<strong>Nome Científico: </strong>{{db.nome_cientifico}}<br />
+				<strong>País de Origem: </strong>{{db.pais_origem}}<br />
+				<strong>Cor: </strong>{{db.cor}}<br />
+				<strong>Floração: </strong>{{db.floracao}}<br />
+				<strong>Tamanho Médio: </strong>{{db.tamanho_medio}}<br />
+				<strong>Solo: </strong>{{db.solo}}<br />
+				<strong>Luminosidade Preferida: </strong
+				>{{db.luminosidade_preferida}}<br />
+				<strong>Frequência de Irrigação: </strong
+				>{{db.frequencia_irrigacao}}<br />
+			</div>
+		</div>
+	</body>
+</html>
